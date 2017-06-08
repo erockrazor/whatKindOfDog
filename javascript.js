@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     // $("#submission").replaceWith('  "  <div id="submission">' +
     //   '<button type="button" id="pictureButton" class="btn btn-success center-block"><i class="fa fa-5x fa-camera" aria-hidden="true"></i></button></div>"');
-  });
+
 
 
   (function() {
@@ -42,5 +42,7 @@ $(document).ready(function() {
   })();
 
 
+
+});
 
 });
