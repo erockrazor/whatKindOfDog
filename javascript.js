@@ -1,16 +1,7 @@
 $(document).ready(function() {
   $("#afterSubmission").hide();
 
-  $("#pictureButton").click(function() {
-    $("#submission").hide();
-    video.pause();
-    $("#afterSubmission").show();
 
-  });
-  $("#pictureButtonReset").click(function() {
-    $("#afterSubmission").hide();
-    $("#submission").show();
-    video.play();
 
     // $("#submission").replaceWith('  "  <div id="submission">' +
     //   '<button type="button" id="pictureButton" class="btn btn-success center-block"><i class="fa fa-5x fa-camera" aria-hidden="true"></i></button></div>"');
@@ -36,6 +27,17 @@ $(document).ready(function() {
       //handle error
       function(error) {
         console.log(error);
+
+        $("#pictureButton").click(function() {
+          $("#submission").hide();
+          video.pause();
+          $("#afterSubmission").show();
+
+        });
+        $("#pictureButtonReset").click(function() {
+          $("#afterSubmission").hide();
+          $("#submission").show();
+          video.play();
       });
   })();
 
