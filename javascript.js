@@ -1,46 +1,18 @@
-  window.addEventListener("load", function() {
-    var camera = document.getElementById("camera");
-    var play = document.getElementById("play");
-    var pause = document.getElementById("pause");
-    var stop = document.getElementById("stop");
-    var constraints = {audio:true, video:true};
+(function () {
+    navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
 
-    function success(stream) {
-      camera.src = stream;
-      camera.play();
-      disableButtons(true, false, false);
-    }
+    navigator.getMedia(
+        // constraints
+        {video:true, audio:false},
 
-    function failure(error) {
-      alert(JSON.stringify(error));
-    }
-
-    function disableButtons(disPlay, disPause, disStop) {
-      play.disabled = disPlay;
-      pause.disabled = disPause;
-      stop.disabled = disStop;
-    }
-
-    disableButtons(true, true, true);
-
-    if (navigator.getUserMedia)
-      navigator.getUserMedia(constraints, success, failure);
-    else
-      alert("Your browser does not support getUserMedia()");
-
-    play.addEventListener("click", function() {
-      disableButtons(true, false, false);
-      camera.play();
-    }, false);
-
-    pause.addEventListener("click", function() {
-      disableButtons(false, true, false);
-      camera.pause();
-    }, false);
-
-    stop.addEventListener("click", function() {
-      disableButtons(true, true, true);
-      camera.pause();
-      camera.src = "";
-    }, false);
-  }, false);
+        // success callback
+        function (mediaStream) {
+            var video = document.getElementsByTagName('video')[0];
+            video.src = window.URL.createObjectURL(mediaStream);
+            video.play();
+        },
+        //handle error
+        function (error) {
+            console.log(error);
+        })
+})();
