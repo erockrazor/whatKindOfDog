@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1, initial-scale=1.0">
@@ -7,7 +8,8 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="javascript.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://use.fontawesome.com/497c683bc9.js"></script>
@@ -18,25 +20,28 @@
 </head>
 
 <body>
+  <div class="container">
+    <h1 class="text-center jumbotron"><b>What Kind of Dog are You?</b></h1>
+    <div class="row videoRow center-block">
+      <div class="embed-responsive embed-responsive-4by3 center-block">
+        <video class="embed-responsive-item " id="videoElement"></video>
+      </div>
+    </div>
+    <!-- 4:3 aspect ratio -->
+    <audio id="voiceClip" src="voiceClip.mp3" type="audio/mp3"></audio>
 
-<div class="row videoRow center-block">
-  <div class="embed-responsive embed-responsive-4by3 center-block">
-    <video class="embed-responsive-item " id="videoElement"></video>
+
+    <div class="row">
+      <div id="submission">
+        <button type="button" id="pictureButton" class="btn btn-success center-block"><i class="fa fa-5x fa-camera" aria-hidden="true"></i></button></div>
+
+      <div id="afterSubmission">
+        <button type="button" id="pictureButtonReset" class="btn btn-secondary center-block"><i class="fa fa-5x fa-times" aria-hidden="true"></i></button>
+      </div>
+      <h1 class="text-center" id="resultsText"></h1>
+
+    </div>
   </div>
-</div>
-  <!-- 4:3 aspect ratio -->
-
-
-<div class="row">
-  <div id="submission">
-    <button type="button" id="pictureButton" class="btn btn-success center-block"><i class="fa fa-5x fa-camera" aria-hidden="true"></i></button></div>
-
-  <div id="afterSubmission">
-    <button type="button" id="pictureButtonReset" class="btn btn-secondary center-block"><i class="fa fa-5x fa-times" aria-hidden="true"></i></button>
-    <h1 class="text-center"> You are Not a Dog. </h1>
-  </div>
-</div>
-
 </body>
 
 </html>
