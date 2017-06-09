@@ -20,6 +20,7 @@ $(document).ready(function() {
 
   sayCheese.on('start', function() {
     // do something when started
+    sayCheese.start();
     this.takeSnapshot();
   });
 
