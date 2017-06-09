@@ -13,18 +13,31 @@ $(document).ready(function() {
   });
 
 
-  $(function() {
-    var sayCheese = new SayCheese('#videoRow', { audio: true });
-    
-    sayCheese.on('start', function() {
-      this.takeSnapshot();
-    });
+  function hasGetUserMedia() {
+    return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+              navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  }
 
-    sayCheese.on('snapshot', function(snapshot) {
-      // a snapshot has been taken, do something with it :)
-    });
+  if (hasGetUserMedia()) {
+    // Good to go!
+  } else {
+    alert('getUserMedia() is not supported in your browser');
+  }
 
-    sayCheese.start();
-  });
+  var errorCallback = function(e) {
+  console.log('Reeeejected!', e);
+};
+
+// Not showing vendor prefixes.
+navigator.getUserMedia({video: true, audio: false}, function(localMediaStream) {
+  var video = document.querySelector('video');
+  video.src = window.URL.createObjectURL(localMediaStream);
+
+  // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
+  // See crbug.com/110938.
+  video.onloadedmetadata = function(e) {
+    // Ready to go. Do some stuff.
+  };
+}, errorCallback);
 
 });
