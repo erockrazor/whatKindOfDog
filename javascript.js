@@ -12,28 +12,19 @@ $(document).ready(function() {
 
   });
 
-  var sayCheese = new SayCheese('#videoRow', {
-    snapshots: true
-  });
 
-  sayCheese.on('start', function() {
-    // do something when started
+  $(function() {
+    var sayCheese = new SayCheese('#videoRow', { audio: true });
+    
+    sayCheese.on('start', function() {
+      this.takeSnapshot();
+    });
+
+    sayCheese.on('snapshot', function(snapshot) {
+      // a snapshot has been taken, do something with it :)
+    });
+
     sayCheese.start();
-    this.takeSnapshot();
   });
-
-  sayCheese.on('error', function(error) {
-    // handle errors, such as when a user denies the request to use the webcam,
-    // or when the getUserMedia API isn't supported
-  });
-
-  sayCheese.on('snapshot', function(snapshot) {
-    // do something with a snapshot canvas element, when taken
-  });
-
-  sayCheese.start();
-
-
-
 
 });
